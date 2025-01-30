@@ -50,16 +50,13 @@ public partial class MainForm : Form
 }
 ~~~
 
- - **Second:** It's quite common to provide a chance to bail out when editing properties. So, suppose we have a `PropertyGrid` set up for our `AppSettings` class. Since the options here are to **[Apply]** _or_ **[Cancel]**, we need to work with a _copy_ of the settings (not the settings themselves). 
+ - **Second:** It's quite common to provide a chance to bail out when editing properties. So, suppose we have a `PropertyGrid` set up for our `AppSettings` class. Since the options here are to **[Apply]** _or_ **[Cancel]**, we need to work with a _copy_ of the settings (not the settings themselves). *I believe that this need for a 'revert' is responsible for the tortured manner that the copying was done in the original code.*
 
 [![property grid][2]][2]
-___
-*I believe this is responsible for the tortured manner that the copying was done in the original code.*
-___
 
 ###### So, here's the thing: 
 
-The `PropertyGrid` is already uses reflection to populate itself, and we could do the same thing. Here, we have added a `CopyValues()` method to make the working copy. 
+The `PropertyGrid` already uses reflection to populate itself, and we could employ the same strategy to make the copy. Here, we have added a `CopyValues()` method that reflect the `public` properties. 
 
 ~~~
 [Flags]
