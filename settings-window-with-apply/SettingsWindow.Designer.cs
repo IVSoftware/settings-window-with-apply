@@ -30,8 +30,8 @@
         {
             propertyGrid = new PropertyGrid();
             panel = new Panel();
-            buttonCancel = new Button();
             buttonApply = new Button();
+            buttonCancel = new Button();
             panel.SuspendLayout();
             SuspendLayout();
             // 
@@ -41,7 +41,7 @@
             propertyGrid.Font = new Font("Segoe UI", 10F);
             propertyGrid.Location = new Point(0, 0);
             propertyGrid.Name = "propertyGrid";
-            propertyGrid.Size = new Size(416, 450);
+            propertyGrid.Size = new Size(578, 544);
             propertyGrid.TabIndex = 0;
             // 
             // panel
@@ -49,39 +49,41 @@
             panel.Controls.Add(buttonApply);
             panel.Controls.Add(buttonCancel);
             panel.Dock = DockStyle.Bottom;
-            panel.Location = new Point(0, 403);
+            panel.Location = new Point(0, 497);
             panel.Name = "panel";
-            panel.Size = new Size(416, 47);
+            panel.Size = new Size(578, 47);
             panel.TabIndex = 1;
-            // 
-            // buttonCancel
-            // 
-            buttonCancel.Location = new Point(292, 3);
-            buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(112, 34);
-            buttonCancel.TabIndex = 0;
-            buttonCancel.Text = "Cancel";
-            buttonCancel.UseVisualStyleBackColor = true;
             // 
             // buttonApply
             // 
-            buttonApply.Location = new Point(174, 3);
+            buttonApply.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonApply.Location = new Point(336, 5);
             buttonApply.Name = "buttonApply";
             buttonApply.Size = new Size(112, 34);
             buttonApply.TabIndex = 0;
             buttonApply.Text = "Apply";
             buttonApply.UseVisualStyleBackColor = true;
             // 
+            // buttonCancel
+            // 
+            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonCancel.Location = new Point(454, 5);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(112, 34);
+            buttonCancel.TabIndex = 0;
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseVisualStyleBackColor = true;
+            // 
             // SettingsWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(416, 450);
+            ClientSize = new Size(578, 544);
             Controls.Add(panel);
             Controls.Add(propertyGrid);
             Name = "SettingsWindow";
-            Text = "SettingsWindow";
             StartPosition = FormStartPosition.CenterParent;
+            Text = "SettingsWindow";
             panel.ResumeLayout(false);
             ResumeLayout(false);
         }

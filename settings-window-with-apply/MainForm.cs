@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Drawing.Design;
 using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using Newtonsoft.Json;
@@ -73,11 +74,14 @@ namespace settings_window_with_apply
                 property.SetValue(target, property.GetValue(this));
             }
         }
+
+
+        [Editor(typeof(ExePathEditor), typeof(UITypeEditor))]
         public string ExePath { get; set; } = string.Empty;
 
         public bool OptSaveUseBrowser { get; set; } = false;
 
-        // Bindable property
+        // Bindable properties
         public Color ToolStripBackColor
         {
             get => _toolStripBackColor;
@@ -91,6 +95,19 @@ namespace settings_window_with_apply
             }
         }
         Color _toolStripBackColor = Color.LightBlue;
+        public ColumnVisibility ColumnVisibility
+        {
+            get => _columnVisibility;
+            set
+            {
+                if (!Equals(_columnVisibility, value))
+                {
+                    _columnVisibility = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        ColumnVisibility _columnVisibility = default;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) => 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
