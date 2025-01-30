@@ -32,32 +32,33 @@
             panel = new Panel();
             buttonApply = new Button();
             buttonCancel = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
             panel.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // propertyGrid
             // 
-            propertyGrid.Dock = DockStyle.Fill;
+            propertyGrid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             propertyGrid.Font = new Font("Segoe UI", 10F);
-            propertyGrid.Location = new Point(0, 0);
+            propertyGrid.Location = new Point(3, 3);
             propertyGrid.Name = "propertyGrid";
-            propertyGrid.Size = new Size(578, 544);
+            propertyGrid.Size = new Size(572, 518);
             propertyGrid.TabIndex = 0;
             // 
             // panel
             // 
             panel.Controls.Add(buttonApply);
             panel.Controls.Add(buttonCancel);
-            panel.Dock = DockStyle.Bottom;
-            panel.Location = new Point(0, 497);
+            panel.Location = new Point(3, 527);
             panel.Name = "panel";
-            panel.Size = new Size(578, 47);
+            panel.Size = new Size(572, 47);
             panel.TabIndex = 1;
             // 
             // buttonApply
             // 
             buttonApply.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonApply.Location = new Point(336, 5);
+            buttonApply.Location = new Point(330, 5);
             buttonApply.Name = "buttonApply";
             buttonApply.Size = new Size(112, 34);
             buttonApply.TabIndex = 0;
@@ -67,24 +68,39 @@
             // buttonCancel
             // 
             buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonCancel.Location = new Point(454, 5);
+            buttonCancel.Location = new Point(448, 5);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(112, 34);
             buttonCancel.TabIndex = 0;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(panel, 0, 1);
+            tableLayoutPanel1.Controls.Add(propertyGrid, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 90.65744F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.342561F));
+            tableLayoutPanel1.Size = new Size(578, 578);
+            tableLayoutPanel1.TabIndex = 2;
+            // 
             // SettingsWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(578, 544);
-            Controls.Add(panel);
-            Controls.Add(propertyGrid);
+            ClientSize = new Size(578, 578);
+            Controls.Add(tableLayoutPanel1);
             Name = "SettingsWindow";
             StartPosition = FormStartPosition.CenterParent;
             Text = "SettingsWindow";
             panel.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -94,5 +110,6 @@
         private Panel panel;
         private Button buttonApply;
         private Button buttonCancel;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

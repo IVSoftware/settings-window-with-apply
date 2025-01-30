@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing.Design;
 using System.Runtime.CompilerServices;
 using System.Security.Policy;
@@ -69,19 +69,30 @@ namespace settings_window_with_apply
     {
         public void CopyValues(AppSettings target)
         {
-            foreach (var property in typeof(AppSettings).GetProperties()) 
+            foreach (var property in typeof(AppSettings).GetProperties())
             {
                 property.SetValue(target, property.GetValue(this));
             }
         }
 
-
+        [Category("General Settings")]
+        [DisplayName("Executable Path")]
+        [Description("Path to the executable file.")]
         [Editor(typeof(ExePathEditor), typeof(UITypeEditor))]
         public string ExePath { get; set; } = string.Empty;
 
+        [Category("General Settings")]
+        [DisplayName("Save Using Browser")]
+        [Description("If enabled, the application will use the default web browser to save settings.")]
         public bool OptSaveUseBrowser { get; set; } = false;
 
-        // Bindable properties
+        private Color _toolStripBackColor = Color.LightBlue;
+
+        // Bindable properties !!!
+
+        [Category("UI Customization")]
+        [DisplayName("Toolbar Background Color")]
+        [Description("Background color of the toolbar.")]
         public Color ToolStripBackColor
         {
             get => _toolStripBackColor;
@@ -94,7 +105,11 @@ namespace settings_window_with_apply
                 }
             }
         }
-        Color _toolStripBackColor = Color.LightBlue;
+        private ColumnVisibility _columnVisibility = default;
+
+        [Category("UI Customization")]
+        [DisplayName("Visible Columns")]
+        [Description("Columns to display.")]
         public ColumnVisibility ColumnVisibility
         {
             get => _columnVisibility;
@@ -107,9 +122,7 @@ namespace settings_window_with_apply
                 }
             }
         }
-        ColumnVisibility _columnVisibility = default;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) => 
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         public event PropertyChangedEventHandler? PropertyChanged;
     }
